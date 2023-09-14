@@ -69,7 +69,7 @@
 
         <!-- center point where needle attached -->
         <div class="center-point">
-            
+
         </div>
         <!-- center to hide dialing pointers -->
         <div class="speedometer-center-hide"></div>
@@ -119,39 +119,56 @@
         var speed = 0;
         var prevSpeed = 0;
         var currentScale = 1;
-        let data_2 = chartData; // chartdata that is getting from php and parsed
         let arrow = document.getElementById('arrow');
+        function updateDashboard() {
+            fetch('fetch_data.php')
+                .then(response => response.json())
+                .then(chartData => {
+                    // console.log(chartData);
+                    if (true) {
+                        prev_data = chartData.sensorValue;
+                        var data = chartData.sensorValue;
 
-        // getting values of angular speed
-        var values = data_2.map(function (item) {
-            return item.angular_speed; // Replace "value" with the actual property name in your data
-        });
+
+                        let data_2 = chartData; // chartdata that is getting from php and parsed
+                        // getting values of angular speed
+                        var values = data.map(function (item) {
+                            return item.angular_speed; // Replace "value" with the actual property name in your data
+                        });
 
 
-        // function to update needle pointer for speed
-        function addClass(speed) {
-            speed *= 0.86111111
-            console.log(speed);
-            arrow.style.transform = 'rotate(' + (speed + 90) + 'deg)';
-            let newClass = 'speed-' + speed;
-            let prevClass = 'speed-' + prevSpeed;
-            let el = document.getElementsByClassName('arrow-wrapper')[0]
-            if (el.classList.contains(prevClass)) {
-                el.classList.remove(prevClass)
-                el.classList.add(newClass)
-            }
-            prevSpeed = speed
+                        // function to update needle pointer for speed
+                        function addClass(speed) {
+                            speed *= 0.86111111
+                            console.log(speed);
+                            arrow.style.transform = 'rotate(' + (speed + 90) + 'deg)';
+                            let newClass = 'speed-' + speed;
+                            let prevClass = 'speed-' + prevSpeed;
+                            let el = document.getElementsByClassName('arrow-wrapper')[0]
+                            if (el.classList.contains(prevClass)) {
+                                el.classList.remove(prevClass)
+                                el.classList.add(newClass)
+                            }
+                            prevSpeed = speed
+                        }
+
+                        // display of text 
+                        function changeText(speed) {
+                            let el = document.getElementsByClassName('num')[0]
+                            el.innerText = speed;
+                        }
+
+                        // showing last value
+                        addClass(values[values.length - 1]);
+                        changeText(values[values.length - 1]);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
         }
-
-        // display of text 
-        function changeText(speed) {
-            let el = document.getElementsByClassName('num')[0]
-            el.innerText = speed;
-        }
-
-        // showing last value
-        addClass(values[values.length - 1]);
-        changeText(values[values.length - 1]);
+        updateDashboard();
+        setInterval(updateDashboard, 500);
     </script>
 </body>
 

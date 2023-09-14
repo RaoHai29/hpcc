@@ -9,7 +9,6 @@
 <body>
 
     <?php require_once("line_graph.php"); ?>
-    <?php require_once("canvas-graph.html"); ?>
     <?php require_once("speedometer.php"); ?>
     </script>
 

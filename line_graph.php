@@ -15,14 +15,16 @@
     }
 </style>
 
-<body>    
+<body>
     <!-- <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>  -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.3.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@1.27.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1.0.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-streaming@2.0.0"></script>
     <canvas id="myChart" class="graph"></canvas>
-    
-    
     <!-- <div id="chartContainer" style="height: 300px; width: 100%;"></div> -->
+
     <script>
         // Function to fetch sensor data and update the dashboard
         var prev_data = [];
@@ -30,7 +32,6 @@
             if (arr1.length !== arr2.length) {
                 return false;
             }
-
             for (let i = 0; i < arr1.length; i++) {
                 const obj1 = arr1[i];
                 const obj2 = arr2[i];
@@ -40,7 +41,6 @@
                     return false;
                 }
             }
-
             return true;
         }
 
@@ -57,7 +57,7 @@
                     if (prev_data.length !== chartData.sensorValue.length) {
                         prev_data = chartData.sensorValue;
                         var data = chartData.sensorValue;
-                        console.log(data);
+                        // console.log(data);
 
                         // Extract the data you need for your chart (e.g., labels and values)
                         var labels2 = data.map(function (item) {
@@ -103,7 +103,7 @@
                         var myChart = new Chart(ctx, {
                             type: 'line',
                             data: {
-                                labels: labels3,
+                                labels: labels2,
                                 datasets: [{
                                     label: 'timestamp to angular_speed',
                                     data: values,
