@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+<head>  
+<script>
+window.onload = function () {
+
+// Sample array of objects (you should replace this with your actual data)
+var dataPointsArray = [
+    { angularSpeed: 450, timestamp: "2023-09-14T10:00:00" },
+    { angularSpeed: 414, timestamp: "2023-09-14T10:15:00" },
+    { angularSpeed: 520, timestamp: "2023-09-14T10:30:00" },
+    // Add more data points as needed
+];
+
+var dataPoints = dataPointsArray.map(function(item) {
+    return { x: new Date(item.timestamp), y: item.angularSpeed };
+});
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	theme: "light2",
+	title:{
+		text: "Angular Speed vs. Timestamp"
+	},
+	axisX: {
+		title: "Timestamp"
+	},
+	axisY: {
+		title: "Angular Speed"
+	},
+	data: [{        
+		type: "line",
+		indexLabelFontSize: 16,
+		dataPoints: dataPoints
+	}]
+});
+chart.render();
+
+}
+</script>
+</head>
+<body>
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+</body>
+</html>

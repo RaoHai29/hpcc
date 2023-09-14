@@ -1,0 +1,460 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.speedometer {
+    width: 300px;
+    height: 300px;
+    border: 3px solid rgb(102, 101, 101);
+    border-radius: 50%;
+    margin: 50px auto;
+    position: relative;
+    z-index: 5;
+}
+
+.center-point {
+    width: 20px;
+    height: 20px;
+    background-color: rgb(77, 76, 76);
+    border-radius: 50%;
+    position: absolute;
+    top: 137px;
+    left: 137px;
+    z-index: 3;
+}
+
+
+.speedometer-center-hide {
+    width: 250px;
+    height: 250px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 22px;
+    left: 22px;
+    z-index: 2;
+}
+
+.speedometer-bottom-hide {
+    width: 320px;
+    height: 154px;
+    background-color: white;
+    position: absolute;
+    z-index: 3;
+    top: 160px;
+    left: -14px;
+    border-top: 1px solid;
+}
+
+.arrow-container {
+    width: 160px;
+    height: 160px;
+    background-color: transparent;
+    position: absolute;
+    z-index: 5;
+    top: 67px;
+    left: 67px;
+}
+
+.arrow-wrapper {
+    width: 160px;
+    height: 160px;
+    background-color: transparent;
+    position: relative;
+    transition: all 0.4s;
+}
+
+.arrow {
+    width: 100px;
+    height: 4px;
+    background-color: purple;
+    position: absolute;
+    top: 78px;
+    left: -28px;
+}
+
+.speed-0 {
+    transform: rotate(0deg);
+}
+
+.speed-10 {
+    transform: rotate(10deg);
+}
+
+.speed-20 {
+    transform: rotate(20deg);
+}
+
+.speed-30 {
+    transform: rotate(30deg);
+}
+
+.speed-40 {
+    transform: rotate(40deg);
+}
+
+.speed-50 {
+    transform: rotate(50deg);
+}
+
+.speed-60 {
+    transform: rotate(60deg);
+}
+
+.speed-70 {
+    transform: rotate(70deg);
+}
+
+.speed-80 {
+    transform: rotate(80deg);
+}
+
+.speed-90 {
+    transform: rotate(90deg);
+}
+
+.speed-100 {
+    transform: rotate(100deg);
+}
+
+.speed-110 {
+    transform: rotate(110deg);
+}
+
+.speed-120 {
+    transform: rotate(120deg);
+}
+
+.speed-130 {
+    transform: rotate(130deg);
+}
+
+.speed-140 {
+    transform: rotate(140deg);
+}
+
+.speed-150 {
+    transform: rotate(150deg);
+}
+
+.speed-160 {
+    transform: rotate(160deg);
+}
+
+.speed-170 {
+    transform: rotate(170deg);
+}
+
+.speed-180 {
+    transform: rotate(180deg);
+}
+
+.speed-value {
+    width: 180px;
+    position: absolute;
+    z-index: 5;
+    left: 58px;
+    top: 50px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.static {
+    font-size: 18px;
+}
+
+.dynamic {
+    margin-top: 10px;
+    /* box-shadow: 2px 2px 5px rgba(122, 121, 121, 0.1); */
+}
+
+.num {
+    font-size: 32px;
+    
+}
+
+.unit {
+    font-size: 16.5px;
+    margin-left: -3px;
+    font-style: italic;
+    position: relative;
+    top: -10px;
+}
+
+.accelarate {
+    margin-top: 120px;
+    text-align: center;
+}
+
+.accelarate button {
+    width: 200px;
+    height: 60px;
+    border: none;
+    border-radius: 5px;
+    margin: 20px;
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 5px 5px 5px gray;
+}
+
+.accelarate button:active {
+    box-shadow: 5px 5px 5px white;
+}
+
+.increase {
+    background-color: green;
+}
+
+.decrease {
+    background-color: red;
+}
+
+.speedometer-scale {
+    width: 8px;
+    height: 237px;
+    background-color: rgb(69, 101, 131);
+    position: absolute;
+    left: 143px;
+    top: 7px;
+    transform: rotate(-90deg);
+}
+
+
+.speedometer-scale-1 {
+    height: 250px;
+    top: 25px;
+    left: 129px;
+    transform: rotate(-90deg);
+    /* background-color: rgb(0, 255, 0); */
+}
+
+.speedometer-scale-2 {
+    transform: rotate(-80deg);
+    /* background-color: rgb(2, 255, 23); */
+    top: 33px;
+    left: 122px;
+}
+
+.speedometer-scale-3 {
+    transform: rotate(-80deg);
+    /* background-color: rgb(116, 255, 2); */
+    top: 27px;
+    left: 122px;
+}
+
+.speedometer-scale-4 {
+    transform: rotate(-64deg);
+    /* background-color: rgb(61, 255, 2); */
+    top: 29px;
+    left: 120px;
+
+}
+
+.speedometer-scale-5 {
+    transform: rotate(-52deg);
+    /* background-color: rgb(137, 255, 2); */
+    top: 27px;
+    left: 120px;
+}
+
+.speedometer-scale-6 {
+    transform: rotate(-46deg);
+    /* background-color: rgb(166, 255, 2); */
+    top: 15px;
+    left: 128px;
+}
+
+.speedometer-scale-7 {
+    transform: rotate(-36deg);
+    /* background-color: rgb(200, 255, 2); */
+    top: 11px;
+    left: 133px;
+}
+
+.speedometer-scale-8 {
+    transform: rotate(-26deg);
+    /* background-color: rgb(230, 255, 2); */
+    top: 10px;
+    left: 137px;
+}
+
+.speedometer-scale-9 {
+    transform: rotate(-16deg);
+    /* background-color: rgb(255, 251, 2); */
+    top: 8px;
+    left: 142px;
+}
+
+.speedometer-scale-10 {
+    transform: rotate(-0.5deg);
+    /* background-color: rgb(255, 217, 2); */
+    top: 8px;
+    left: 138px;
+}
+
+.speedometer-scale-11 {
+    transform: rotate(10deg);
+    /* background-color: rgb(255, 196, 2); */
+    top: 8px;
+    left: 143px;
+}
+
+.speedometer-scale-12 {
+    transform: rotate(20deg);
+    /* background-color: rgb(255, 166, 2); */
+    top: 9px;
+    left: 149px;
+}
+
+.speedometer-scale-13 {
+    transform: rotate(33deg);
+    /* background-color: rgb(255, 154, 2); */
+    top: 10px;
+    left: 151px;
+}
+
+.speedometer-scale-14 {
+    transform: rotate(44deg);
+    /* background-color: rgb(255, 137, 2); */
+    top: 15px;
+    left: 156px;
+}
+
+.speedometer-scale-15 {
+    transform: rotate(55deg);
+    /* background-color: rgb(255, 116, 2); */
+    top: 21px;
+    left: 159px;
+}
+
+.speedometer-scale-16 {
+    transform: rotate(67deg);
+    /* background-color: rgb(255, 95, 2); */
+    top: 27px;
+    left: 161px;
+}
+
+.speedometer-scale-17 {
+    transform: rotate(78deg);
+    /* background-color: rgb(255, 74, 2); */
+    top: 31px;
+    left: 160px;
+}
+
+.speedometer-scale-18 {
+    transform: rotate(80deg);
+    /* background-color: rgb(255, 53, 2); */
+    top: 34px;
+    left: 121px;
+}
+
+.speedometer-scale-19 {
+    /* width: 165px; */
+    height: 250px;
+    top: 25px;
+    left: 154px;
+    transform: rotate(90deg);
+    /* background-color: rgb(255, 2, 2); */
+}
+
+.speedometer-scale-20 {
+    transform: rotate(100deg);
+    /* background-color: rgb(255, 53, 2); */
+    top: 35px;
+    left: 161px;
+}
+
+.speedometer-scale-21 {
+    transform: rotate(110deg);
+    /* background-color: rgb(255, 53, 2); */
+    top: 35px;
+    left: 129px;
+}
+
+.speedometer-scale-22 {
+    transform: rotate(118deg);
+    /* background-color: rgb(255, 53, 2); */
+    top: 23px;
+    left: 166px;
+}
+
+.speedometer-scale-23 {
+    transform: rotate(127deg);
+    /* background-color: rgb(255, 53, 2); */
+    top: 29px;
+    left: 164px;
+}
+
+.speedometer-scale-24 {
+    transform: rotate(142deg);
+    /* background-color: rgb(255, 53, 2); */
+    top: 28px;
+    left: 170px;
+}
+
+.speedometer-scale-25 {
+    transform: rotate(151deg);
+    /* background-color: rgb(255, 53, 2); */
+    top: 35px;
+    left: 167px;
+}
+
+.speedometer-scale-26 {
+    transform: rotate(157deg);
+    /* background-color: rgb(255, 53, 2); */
+    top: 43px;
+    left: 158px;
+}
+
+.speedometer-scale-27 {
+    transform: rotate(80deg);
+    /* background-color: rgb(255, 53, 2); */
+    top: 34px;
+    left: 124px;
+}
+
+.speedometer-scale-28 {
+    transform: rotate(68deg);
+    /* background-color: rgb(255, 53, 2); */
+    top: 34px;
+    left: 124px;
+}
+
+.speedometer-scale-29 {
+    transform: rotate(58deg);
+    /* background-color: rgb(255, 53, 2); */
+    top: 38px;
+    left: 126px;
+}
+
+.speedometer-scale-30 {
+    transform: rotate(48deg);
+    /* background-color: rgb(255, 53, 2); */
+    top: 43px;
+    left: 129px;
+}
+
+.speedometer-scale-31 {
+    transform: rotate(36deg);
+    /* background-color: rgb(255, 53, 2); */
+    top: 46px;
+    left: 134px;
+}
+
+.speedometer-scale-32 {
+    transform: rotate(25deg);
+    /* background-color: rgb(255, 53, 2); */
+    top: 46px;
+    left: 135px;
+}
+
+.speedometer-scale-31 {
+    transform: rotate(38deg);
+    /* background-color: rgb(255, 53, 2); */
+    top: 44px;
+    left: 134px;
+}
