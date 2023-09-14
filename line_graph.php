@@ -15,13 +15,14 @@
     }
 </style>
 
-<body>
-    <canvas id="myChart" class="graph"></canvas>
-    
-    <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
-
+<body>    
+    <!-- <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>  -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
+    <canvas id="myChart" class="graph"></canvas>
+    
+    
+    <!-- <div id="chartContainer" style="height: 300px; width: 100%;"></div> -->
     <script>
         // Function to fetch sensor data and update the dashboard
         var prev_data = [];
@@ -52,22 +53,22 @@
             fetch('fetch_data.php')
                 .then(response => response.json())
                 .then(chartData => {
-                    console.log(chartData);
+                    // console.log(chartData);
                     if (prev_data.length !== chartData.sensorValue.length) {
                         prev_data = chartData.sensorValue;
                         var data = chartData.sensorValue;
+                        console.log(data);
 
                         // Extract the data you need for your chart (e.g., labels and values)
                         var labels2 = data.map(function (item) {
                             return item.timestamp; // Replace "label" with the actual property name in your data
                         });
                         var labels3 = []
-                        for(let i = 0; i < 30; i++)
-                        {
-                            labels3.push(labels2[i]);
+                        for (let i = 0; i < 30; i++) {
+                            labels3.push(labels2[labels2.length - i]);
                         }
 
-                        // labels2 =labels2.slice(-20);
+                        // labels2 =labels2.slice(15);
 
                         var values = data.map(function (item) {
                             return item.angular_speed; // Replace "value" with the actual property name in your data
@@ -102,7 +103,7 @@
                         var myChart = new Chart(ctx, {
                             type: 'line',
                             data: {
-                                labels: labels2,
+                                labels: labels3,
                                 datasets: [{
                                     label: 'timestamp to angular_speed',
                                     data: values,
@@ -154,9 +155,7 @@
                                 }
                             }
                         });
-
                     }
-
                 })
                 .catch(error => {
                     console.error('Error:', error);

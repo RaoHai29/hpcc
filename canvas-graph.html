@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+
+</head>
+
+<body>
+	<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+	<script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+
+	<script>
+		window.onload = function () {
+
+			fetch('fetch_data.php')
+				.then(response => response.json(), (err) => {console.log(err)})
+				.then(chartData => {
+					console.log(chartData);
+					if (true) {
+						prev_data = chartData.sensorValue;
+						var data = chartData.sensorValue;
+						console.log(data);
+						var dataPoints = data.map(function (item) {
+							return { x: item.timestamp, y: item.angularSpeed };
+						});
+
+						var chart = new CanvasJS.Chart("chartContainer", {
+							animationEnabled: true,
+							theme: "light2",
+							title: {
+								text: "Angular Speed vs. Timestamp"
+							},
+							axisX: {
+								title: "Timestamp"
+							},
+							axisY: {
+								title: "Angular Speed"
+							},
+							data: [{
+								type: "line",
+								indexLabelFontSize: 16,
+								dataPoints: dataPoints
+							}]
+						});
+						chart.render();
+					}
+				})
+				.catch(error => {
+					console.error('Error:', error);
+				});
+		}
+	</script>
+</body>
+
+</html>
