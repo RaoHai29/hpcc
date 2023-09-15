@@ -119,37 +119,80 @@
         var speed = 0;
         var prevSpeed = 0;
         var currentScale = 1;
-        let arrow = document.getElementById('arrow');
+        var prev_data = [];
+        var arrow = document.getElementById('arrow');
         function updateDashboard() {
             fetch('fetch_data.php')
                 .then(response => response.json())
                 .then(chartData => {
                     // console.log(chartData);
-                    if (true) {
+                    if (prev_data.length !== chartData.sensorValue.length) {
                         prev_data = chartData.sensorValue;
                         var data = chartData.sensorValue;
-
-
                         let data_2 = chartData; // chartdata that is getting from php and parsed
                         // getting values of angular speed
                         var values = data.map(function (item) {
                             return item.angular_speed; // Replace "value" with the actual property name in your data
                         });
-
-
+                        // Function to remove transition after it ends
+                        function removeTransition() {
+                            arrow.style.transition = '';
+                            el.removeEventListener('transitionend', removeTransition);
+                        }
                         // function to update needle pointer for speed
                         function addClass(speed) {
-                            speed *= 0.86111111
-                            console.log(speed);
-                            arrow.style.transform = 'rotate(' + (speed + 90) + 'deg)';
-                            let newClass = 'speed-' + speed;
-                            let prevClass = 'speed-' + prevSpeed;
-                            let el = document.getElementsByClassName('arrow-wrapper')[0]
-                            if (el.classList.contains(prevClass)) {
-                                el.classList.remove(prevClass)
-                                el.classList.add(newClass)
+                            var newSpeed = speed;
+                            if (true) {
+                                console.log(speed);
+                                // arrow.style.transition = 'transform 0.02s';
+                                arrow.style.transform = 'rotate(' + speed + 'deg)';
+                                let newClass = 'speed-' + speed;
+                                let prevClass = 'speed-' + prevSpeed;
+                                let el = document.getElementsByClassName('arrow-wrapper')[0]
+                                if (el.classList.contains(prevClass)) {
+                                    el.classList.remove(prevClass)
+                                    el.classList.add(newClass)
+                                }
+                                prevSpeed = speed
+                                // setTimeout(function() { 
+                                //     arrow.style.transition = '';
+                                // }, 10)
                             }
-                            prevSpeed = speed
+                            else if (Math.abs(prevSpeed) === 348 && speed === 0) {
+                                arrow.style.transform = 'rotate(' + speed + 'deg)';
+                                let newClass = 'speed-' + speed;
+                                let prevClass = 'speed-' + prevSpeed;
+                                let el = document.getElementsByClassName('arrow-wrapper')[0]
+                                if (el.classList.contains(prevClass)) {
+                                    el.classList.remove(prevClass)
+                                    el.classList.add(newClass)
+                                }
+                                prevSpeed = speed
+                            }
+                            else if (Math.abs(prevSpeed) === 0 && speed === 348) {
+                                arrow.style.transform = 'rotate(' + speed + 'deg)';
+                                let newClass = 'speed-' + speed;
+                                let prevClass = 'speed-' + prevSpeed;
+                                let el = document.getElementsByClassName('arrow-wrapper')[0]
+                                if (el.classList.contains(prevClass)) {
+                                    el.classList.remove(prevClass)
+                                    el.classList.add(newClass)
+                                }
+                                prevSpeed = speed
+                            }
+                            // else {
+
+                            // }
+                            // console.log(speed);
+                            // arrow.style.transform = 'rotate(' + speed + 'deg)';
+                            // let newClass = 'speed-' + speed;
+                            // let prevClass = 'speed-' + prevSpeed;
+                            // let el = document.getElementsByClassName('arrow-wrapper')[0]
+                            // if (el.classList.contains(prevClass)) {
+                            //     el.classList.remove(prevClass)
+                            //     el.classList.add(newClass)
+                            // }
+                            // prevSpeed = speed
                         }
 
                         // display of text 

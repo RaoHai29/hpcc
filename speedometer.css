@@ -63,16 +63,17 @@
     height: 160px;
     background-color: transparent;
     position: relative;
-    transition: all 0.4s;
+    transition: all 0.02s;
 }
 
 .arrow {
+    transform: rotate(90deg);
     width: 100px;
     height: 4px;
     background-color: purple;
     position: absolute;
-    top: 78px;
-    left: -28px;
+    top: 19px;
+    left: 29px;
 }
 
 .speed-0 {
@@ -242,7 +243,7 @@
 .speedometer-scale-3 {
     transform: rotate(-80deg);
     /* background-color: rgb(116, 255, 2); */
-    top: 27px;
+    top: 25px;
     left: 122px;
 }
 
@@ -251,7 +252,6 @@
     /* background-color: rgb(61, 255, 2); */
     top: 29px;
     left: 120px;
-
 }
 
 .speedometer-scale-5 {
